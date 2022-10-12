@@ -4,6 +4,7 @@ import { Banner } from '../model/banner';
 import { Product } from '../model/product';
 import { Subcategory } from '../model/subcategory';
 import { Category } from '../model/category';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -27,7 +28,11 @@ export class HomePageComponent implements OnInit {
   imageUrl = "http://admin.iphosam.co.tz/public/upload/images/product/";
 
   products: Product | undefined;
-  constructor(private api :  ApiServiceService) { }
+  constructor(private api :  ApiServiceService,
+    private route: ActivatedRoute,
+    private router: Router
+
+    ) { }
 
 
   ngOnInit(): void {
@@ -77,6 +82,15 @@ export class HomePageComponent implements OnInit {
     });
 
 
+
+  }
+
+
+
+  moveProductDetails(id:string,cate:string){
+    console.log(id);
+    console.log(cate);
+    this.router.navigate(['/productDetails'], { queryParams: { id: id,cate:cate } });
 
   }
 

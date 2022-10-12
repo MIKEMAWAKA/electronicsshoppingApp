@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Banner } from './model/banner';
-import { Product } from './model/product';
+import { Product, Order } from './model/product';
 import { Subcategory } from './model/subcategory';
 
 @Injectable({
@@ -23,6 +23,26 @@ export class ApiServiceService {
     .pipe(map((res:any)=>{
       return res;
     }))
+  }
+
+  getPostOrder(data:Order){
+
+    const headers = { 'content-type': 'application/json'}
+    const body=JSON.stringify(data);
+    console.log(body)
+    // return this.http.post<Person>(this.baseURL + 'people', body,{'headers':headers})
+
+
+    return this.http.post<Order>("http://127.0.0.1:8000/api/orders",
+    body,
+    {
+      'headers':headers
+    }
+
+    );
+    // .pipe(map((res:any)=>{
+    //   return res;
+    // }))
   }
 
   getBannner(){

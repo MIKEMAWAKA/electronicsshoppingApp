@@ -42,6 +42,57 @@ export interface Productimage {
   created_at?:    string;
   updated_at?:    string;
   deleted_at?:    string;
+
+}
+
+export class Order {
+
+
+	// constructor(
+  //   id?: number,
+  //   name?: string,
+  //   fname?: string,
+  //   lname?: string,
+  //   phone?: string,
+  //   address?: string,
+  //   location?: string,
+  //   city?: string,
+  //   productname?: string,
+  //   itemprice?: string,
+  //   totalprice?: string,
+  //   product_id?: string,
+  //   user_id?: string,
+  // ) {
+  //   this.id = id;
+  //   this.name= name;
+  //   this.fname=fname;
+  //   this.lname =lname;
+  //   this.phone =phone;
+  //   this.address= address;
+  //   this.location=location;
+  //   this.city=city;
+  //   this.productname= productname;
+  //   this.itemprice= itemprice;
+  //   this.totalprice=totalprice;
+  //   this.product_id= product_id;
+  //   this.user_id= user_id;
+
+
+	// }
+
+  id?:         number;
+  name?:       string;
+  fname?: string;
+  lname?: string;
+  phone?: string;
+  address?: string;
+  location?: string;
+  city?: string;
+  productname?: string;
+  itemprice?: string;
+  totalprice?: string;
+  product_id?: string;
+  user_id?: string;
 }
 
 

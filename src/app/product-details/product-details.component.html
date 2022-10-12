@@ -1,1 +1,283 @@
-<p>product-details works!</p>
+
+
+<ng-container *ngFor="let item of productsDetails">
+
+  <div class="breadcumbs">
+
+    <div class="container">
+
+        <div class="row">
+
+            <span>Home > </span>
+
+
+    <span></span>
+
+            <span></span>
+
+            <span>{{ item.name}}</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="short-description">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="product-thumbnail">
+
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+
+                        <ul class="thumb-image" *ngFor="let ite of item.productimages">
+
+
+                            <li class="active"><a href=""><img src="{{ imageUrl+ite.name}}" alt=""></a></li>
+
+                            <li><a href=""><img src="{{ imageUrl+ite.name}}" alt=""></a></li>
+<!--
+                            <li><a href="images/single-product-3.jpg"><img src="images/single-product-3.jpg" alt=""></a></li>
+
+                            <li><a href=""><img src="images/single-product-4.jpg" alt=""></a></li>
+
+                            <li><a href=""><img src="images/single-product-5.jpg" alt=""></a></li> -->
+
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-10 col-sm-10 col-xs-10">
+                      <ng-container *ngFor="let ite of item.productimages">
+                        <div class="thumb-main-image"><a href=""><img src="{{ imageUrl+ite.name}}" alt=""></a></div>
+
+
+                      </ng-container>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h1 class="product-title">{{  item.name}}</h1>
+
+                <div class="ratings">
+
+                    <i class="fa fa-star"></i>
+
+                    <i class="fa fa-star"></i>
+
+                    <i class="fa fa-star"></i>
+
+                    <i class="fa fa-star"></i>
+
+                    <i class="fa fa-star"></i>
+
+                    <span class="vote-count">35 vote</span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-id"><span class="strong-text">Product ID:</span> RST 4562</span>
+
+
+
+                    <span class="product-avilability"><span class="strong-text">Availability:</span> In Stock</span>
+
+                </div>
+
+                <p class="short-info">{{  item.shortdescription}}</p>
+
+                <div class="price">
+
+                    <span>{{ item.sale_price  | currency : "TZS" }}</span>
+
+                </div>
+
+                <form action="" class="purchase-form">
+
+                   <!-- <div class="qt-area">
+
+                       <i class="fa fa-minus"></i>
+
+                       <input name="quantity" class="qt" value="1">
+
+                       <i class="fa fa-plus"></i>
+
+                   </div> -->
+
+
+
+                    <button  (click)="moveOrder(item.id,item.subcategory_id)" class="btn btn-theme" type="submit">Buy</button>
+
+                    <!-- <div class="social-share">
+
+                        <ul>
+
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+
+                        </ul>
+
+                    </div> -->
+
+                </form>
+
+                <p><span class="strong-text">Categories:</span> Iphone,Samsung</p>
+
+                <p><span class="strong-text">Tags:</span> IPHOSAM MOBILE PHONES AND ACCESSORIES</p>
+
+
+<!--
+                <ul class="product-info-btn">
+
+                    <li><a href=""><i class="fa fa-heart-o"></i> Wishlist</a></li>
+
+                    <li><a href=""><i class="fa fa-arrows-h"></i> Compare</a></li>
+
+                    <li><a href=""><i class="fa fa-envelope-o"></i> Email</a></li>
+
+                    <li><a href=""><i class="fa fa-print"></i> Print</a></li>
+
+                </ul> -->
+
+                <!-- <p><i class="fa fa-check"></i> Let’s start with the most essential part of any written content. At the early </p> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="single-product-tabs">
+
+            <ul class="nav nav-tabs nav-single-product-tabs">
+
+                <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+
+                <li><a href="#reviews" data-toggle="tab">Product list</a></li>
+
+            </ul>
+
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="description">
+
+                    <div class="product-desc">
+
+                        <h2>Product Description</h2>
+
+                        <p>{{  item.shortdescription}}</p>
+
+                    </div>
+
+                </div>
+
+                <div class="tab-pane" id="reviews">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</ng-container>
+
+
+
+  <div class="container">
+
+      <div class="row">
+
+          <div class="related-items">
+
+              <ul class="nav nav-tabs nav-single-product-tabs">
+
+                  <li class="active"><a href="#related" data-toggle="tab">Related Products</a></li>
+
+              </ul>
+
+              <div class="tab-content">
+
+                  <div class="tab-pane active" id="related">
+
+                    <div *ngFor="let item of productList | filter:searchKey:'name'" class="tab-pane active" id="trending">
+
+                      <div class="col-md-3 col-sm-4">
+
+                          <div class="single-product" (click)="moveProductDetails(item.id,item.subcategory_id)">
+
+                              <div class="product-block">
+
+                                  <img src="{{ imageUrl+item.productimages[0].name}}" alt="" class="thumbnail">
+
+                                  <div class="product-description text-center">
+
+                                      <p class="title">{{ item.name}}</p>
+
+                                      <p class="price">{{ item.sale_price  | currency : "TZS" }}</p>
+
+                                  </div>
+
+                                  <div class="product-hover">
+
+                                      <ul>
+
+                                          <li><a  (click)="moveProductDetails(item.id,item.subcategory_id)"><i class="fa fa-cart-arrow-down"></i></a></li>
+
+                                          <li><a  (click)="moveProductDetails(item.id,item.subcategory_id)"><i class="fa fa-arrows-h"></i></a></li>
+
+                                          <li><a  (click)="moveProductDetails(item.id,item.subcategory_id)"><i class="fa fa-heart-o"></i></a></li>
+
+                                      </ul>
+
+                                  </div>
+
+                              </div>
+
+                          </div>
+
+                      </div>
+
+
+                  </div>
+
+
+
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>

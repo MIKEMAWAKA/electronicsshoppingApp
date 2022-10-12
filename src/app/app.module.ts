@@ -16,6 +16,8 @@ import { SliderComponent } from './slider/slider.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MainComponent } from './main/main.component';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MainComponent } from './main/main.component';
     SliderComponent,
     ProductlistComponent,
     CheckoutComponent,
-    MainComponent
+    MainComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,10 @@ import { MainComponent } from './main/main.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide:LocationStrategy,useClass:PathLocationStrategy},
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

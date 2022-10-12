@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { Banner } from '../model/banner';
 import { Product } from '../model/product';
@@ -25,7 +26,9 @@ export class ProductlistComponent implements OnInit {
   imageUrl = "http://admin.iphosam.co.tz/public/upload/images/product/";
 
   products: Product | undefined;
-  constructor(private api :  ApiServiceService) { }
+  constructor(private api :  ApiServiceService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
 
   ngOnInit(): void {
@@ -68,6 +71,11 @@ export class ProductlistComponent implements OnInit {
         return a;
       }
     })
+  }
+
+  moveProductDetails(id:string,cate:string){
+    this.router.navigate(['/productDetails'], { queryParams: { id: id,cate:cate } });
+
   }
 
 }

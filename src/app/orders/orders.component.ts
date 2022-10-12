@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import { Banner } from '../model/banner';
-import { Product } from '../model/product';
+import { Order, Product } from '../model/product';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class OrdersComponent implements OnInit {
 
   constructor(private api :  ApiServiceService,
     private route: ActivatedRoute,
@@ -32,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   imageUrl = "http://admin.iphosam.co.tz/public/upload/images/product/";
 
   products: Product | undefined;
+  order= new Order();
 
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
       // console.log(params.get('id'));
       this.productId = params['id'];
       this.categoryId =params['cate'];
+
     });
 
     console.log(`Product id ${this.productId}`)
@@ -64,10 +66,7 @@ export class ProductDetailsComponent implements OnInit {
 
       //   console.log("Products");
       //   console.log(a.name);
-      //   // if(a.category ==="women's clothing" || a.category ==="men's clothing"){
-      //   //   a.category ="fashion"
-      //   // }
-      //   // Object.assign(a,{quantity:1,total:a.price});
+
       // });
 
       // console.log(this.productList)
@@ -88,9 +87,23 @@ export class ProductDetailsComponent implements OnInit {
 
   }
 
-  moveOrder(dd:any,cate:any){
+  submitOrder(id:any,name:any,price:any){
+    const money = new Intl.NumberFormat('sw-TZ',
+  { style:'currency', currency: 'TZS' });
+    console.log("get order");
+    this.order.product_id =id;
+    this.order.productname =name;
+    this.order.totalprice =money.format(parseInt(price));
+
+
     // window.location.reload();
-    this.router.navigate(['/orders'], { queryParams: { id: dd,cate:cate } });
+    console.log(this.order);
+    this.api.getPostOrder(this.order).subscribe(res=>{
+        console.log(res);
+        this.router.navigate(['/products'], );
+    });
+    ;
+
 
   }
 

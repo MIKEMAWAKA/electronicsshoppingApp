@@ -1,0 +1,131 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+          <div class="container-fluid">
+              <ul class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#">Products</a></li>
+                  <li class="breadcrumb-item active">Checkout</li>
+              </ul>
+          </div>
+      </div>
+      <!-- Breadcrumb End -->
+
+      <!-- Checkout Start -->
+      <div class="checkout">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-8">
+                      <div class="checkout-inner">
+                          <div class="billing-address">
+                              <h2>Billing Address</h2>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>First Name</label>
+                                      <input class="form-control" required [(ngModel)]="order.fname" type="text" placeholder="First Name">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label>Last Name</label>
+                                      <input class="form-control" required [(ngModel)]="order.lname" type="text" placeholder="Last Name">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label>E-mail(Option)</label>
+                                      <input class="form-control" [(ngModel)]="order.name"  type="text" placeholder="E-mail">
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label>Mobile No</label>
+                                      <input class="form-control" required="mandantory *" [(ngModel)]="order.phone"  type="text" placeholder="Mobile No">
+                                  </div>
+                                  <div class="col-md-12">
+                                      <label>Location</label>
+                                      <input class="form-control"[(ngModel)]="order.location"  type="text" placeholder="location">
+                                  </div>
+
+                                  <div class="col-md-6">
+                                      <label>City</label>
+                                      <input class="form-control" [(ngModel)]="order.city"   type="text" placeholder="City">
+                                  </div>
+
+
+                              </div>
+                          </div>
+
+
+                      </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <ng-container *ngFor="let item of productsDetails">
+                      <div class="checkout-inner">
+                          <div class="checkout-summary">
+
+                              <h1>Total</h1>
+                              <p>Product Name<span>{{  item.name}}</span></p>
+                              <p class="sub-total">Sub Total<span>{{ item.sale_price  | currency : "TZS" }}</span></p>
+
+                              <h2>Grand Total<span>{{ item.sale_price  | currency : "TZS" }}</span></h2>
+
+
+
+                          </div>
+
+                          <div class="checkout-payment">
+                              <div class="payment-methods">
+                                  <h1>Payment Methods</h1>
+                                  <div class="payment-method">
+                                      <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="payment-1" name="payment">
+                                          <label class="custom-control-label" for="payment-1">Paypal</label>
+                                      </div>
+                                      <div class="payment-content" id="payment-1-show">
+
+                                      </div>
+                                  </div>
+                                  <div class="payment-method">
+                                      <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="payment-2" name="payment">
+                                          <label class="custom-control-label" for="payment-2">Mobile money</label>
+                                      </div>
+                                      <div class="payment-content" id="payment-2-show">
+
+                                      </div>
+                                  </div>
+                                  <div class="payment-method">
+                                      <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="payment-3" name="payment">
+                                          <label class="custom-control-label" for="payment-3">Check Payment</label>
+                                      </div>
+                                      <div class="payment-content" id="payment-3-show">
+
+                                      </div>
+                                  </div>
+                                  <div class="payment-method">
+                                      <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="payment-4" name="payment">
+                                          <label class="custom-control-label" for="payment-4">Direct Bank Transfer</label>
+                                      </div>
+                                      <div class="payment-content" id="payment-4-show">
+
+                                      </div>
+                                  </div>
+                                  <div class="payment-method">
+                                      <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="payment-5" name="payment">
+                                          <label class="custom-control-label" for="payment-5">Cash on Delivery</label>
+                                      </div>
+                                      <div class="payment-content" id="payment-5-show">
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div (click)="submitOrder(item.id,item.name,item.sale_price )" class="checkout-btn">
+                                  <button >   Place Order</button>
+                              </div>
+                          </div>
+                      </div>
+
+                    </ng-container>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Checkout End -->
