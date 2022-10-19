@@ -21,9 +21,13 @@ export class ProductlistComponent implements OnInit {
 
   filterCategory!: Array<Product>;
   searchKey:string ="";
-  bannerUrl = "http://admin.iphosam.co.tz/public/upload/images/banner/";
-  subrUrl = "http://admin.iphosam.co.tz/public/upload/images/subcategory/";
-  imageUrl = "http://admin.iphosam.co.tz/public/upload/images/product/";
+  // bannerUrl = "http://admin.iphosam.co.tz/public/upload/images/banner/";
+  // subrUrl = "http://admin.iphosam.co.tz/public/upload/images/subcategory/";
+  // imageUrl = "http://admin.iphosam.co.tz/public/upload/images/product/";
+
+  bannerUrl = "https://admin.samsunghubtz.co.tz/public/upload/images/banner/";
+  subrUrl = "https://admin.samsunghubtz.co.tz/public/upload/images/subcategory/";
+  imageUrl = "https://admin.samsunghubtz.co.tz/public/upload/images/product/";
 
   products: Product | undefined;
   constructor(private api :  ApiServiceService,

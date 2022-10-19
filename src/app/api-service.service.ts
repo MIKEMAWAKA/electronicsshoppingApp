@@ -19,7 +19,7 @@ export class ApiServiceService {
   constructor(private http : HttpClient) { }
 
   getProduct(){
-    return this.http.get<Product>("http://iphosam.co.tz/api/products")
+    return this.http.get<Product>("https://admin.samsunghubtz.co.tz/api/products")
     .pipe(map((res:any)=>{
       return res;
     }))
@@ -33,7 +33,7 @@ export class ApiServiceService {
     // return this.http.post<Person>(this.baseURL + 'people', body,{'headers':headers})
 
 
-    return this.http.post<Order>("http://127.0.0.1:8000/api/orders",
+    return this.http.post<Order>("https://admin.samsunghubtz.co.tz/api/orders",
     body,
     {
       'headers':headers
@@ -46,14 +46,14 @@ export class ApiServiceService {
   }
 
   getBannner(){
-    return this.http.get<Banner>("http://iphosam.co.tz/api/banners")
+    return this.http.get<Banner>("https://admin.samsunghubtz.co.tz/api/banners")
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
   getSubCategory(){
-    return this.http.get<Subcategory>("http://iphosam.co.tz/api/sub_categories")
+    return this.http.get<Subcategory>("https://admin.samsunghubtz.co.tz/api/sub_categories")
     .pipe(map((res:any)=>{
       return res;
     }))
